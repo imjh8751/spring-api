@@ -1,0 +1,46 @@
+# 서버 설정
+server:
+  servlet:
+    context-path: /
+  error:
+    whitelabel:
+      enabled: false
+
+# web서비스 설정
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
+    pathmatch:
+      matching-strategy: ant-path-matcher # swagger-ui 사용하기 위한 설정
+
+# 데이터 수집을 위한 설정
+management:
+  server:
+    port: 9090
+  endpoints:
+    web:
+      exposure:
+        include: health, info, metrics, prometheus, gateway, openapi, swagger-ui
+        
+# 로그 레벨 설정
+logging:
+#  file: 
+#    name: ./logs/file.log
+  level:
+    root: info
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{36} - %msg%n"
+#    file: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"
+
+# swagger-ui custom path
+#springdoc:
+#  swagger-ui:
+#    enabled: true
+##    path: /swagger-ui.html
+#  api-docs:
+#    enabled: true
+##    path: /api-docs
+#  show-actuator: true
+#  use-management-port: true 
