@@ -11,4 +11,4 @@ COPY build/libs/spring-api-0.0.1-SNAPSHOT.jar /app/application.jar
 EXPOSE 8080
 
 # Run the application
-CMD ["java", "-jar", "your-application.jar"]
+CMD ["java", "-jar", "application.jar"]
