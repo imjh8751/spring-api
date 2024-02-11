@@ -8,7 +8,7 @@ WORKDIR /app
 COPY build/libs/spring-api-0.0.1-SNAPSHOT.jar /app/application.jar
 
 # Expose the port that your application will run on
-EXPOSE 80
+EXPOSE 8080
 
 # Run the application
 CMD ["java", "-jar", "your-application.jar"]
