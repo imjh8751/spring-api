@@ -14,6 +14,11 @@ spring:
       suffix: .jsp
     pathmatch:
       matching-strategy: ant-path-matcher # swagger-ui 사용하기 위한 설정
+  # Redis connection configuration
+  data:
+    redis: 
+      host: 192.168.0.180
+      port: 6001
 
 # 데이터 수집을 위한 설정
 management:
@@ -33,6 +38,7 @@ logging:
   pattern:
     console: "%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{36} - %msg%n"
 #    file: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"
+
 
 # swagger-ui custom path
 #springdoc:

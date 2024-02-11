@@ -5,7 +5,7 @@ FROM openjdk:8-jdk-alpine
 WORKDIR /app
 
 # Copy the JAR file into the container
-COPY target/your-application.jar /app/your-application.jar
+COPY build/libs/spring-api-0.0.1-SNAPSHOT.jar /app/application.jar
 
 # Expose the port that your application will run on
 EXPOSE 80
