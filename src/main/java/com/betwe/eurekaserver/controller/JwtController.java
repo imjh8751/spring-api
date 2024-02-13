@@ -40,7 +40,7 @@ public class JwtController {
         payloads.put("name", name);
         
         Date currentDate = new Date();
-        Date expirationDate = new Date(currentDate.getTime() + 3600000);
+        //Date expirationDate = new Date(currentDate.getTime() + 3600000);
         
         return Jwts.builder()
                 .setHeader(headers)
