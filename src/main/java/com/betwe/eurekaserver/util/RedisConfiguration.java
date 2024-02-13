@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisClusterConfiguration;
 import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 @Configuration
@@ -30,6 +31,9 @@ public class RedisConfiguration {
                 .stream()
                 .map(m -> m.trim())
                 .collect(Collectors.toList());
+		for(String node : clusterNodeList) {
+			System.out.println("node : " + node);
+		}
 		RedisClusterConfiguration redisStandaloneConfiguration = new RedisClusterConfiguration(clusterNodeList);
 		//redisStandaloneConfiguration.setPassword(redisPassword);
 		LettuceConnectionFactory lettuceConnectionFactory = new LettuceConnectionFactory(redisStandaloneConfiguration);
@@ -42,6 +46,8 @@ public class RedisConfiguration {
 		redisTemplate.setConnectionFactory(lettuceConnectionFactory());
 		redisTemplate.setKeySerializer(new StringRedisSerializer());
 		redisTemplate.setValueSerializer(new StringRedisSerializer());
+        redisTemplate.setHashKeySerializer(RedisSerializer.string());
+        redisTemplate.setHashValueSerializer(RedisSerializer.java());
 		return redisTemplate;
 	}
 	
