@@ -24,10 +24,10 @@ spring:
         nodes: 192.168.0.180:6001,192.168.0.180:6002,192.168.0.180:6003,192.168.0.180:6004,192.168.0.180:6005,192.168.0.180:6006,192.168.0.180:6007,192.168.0.180:6008,192.168.0.180:6009
         max-redirects: 1500
   kafka:
-    bootstrap-servers: 192.168.0.181:9092,192.168.0.181:9093,192.168.0.181:9094
+    #bootstrap-servers: 192.168.0.181:9092,192.168.0.181:9093,192.168.0.181:9094
     consumer:
       # consumer bootstrap servers가 따로 존재하면 설정
-      # bootstrap-servers: 3.34.97.97:9092
+      bootstrap-servers: 192.168.0.181:9092,192.168.0.181:9093,192.168.0.181:9094
 
       # 식별 가능한 Consumer Group Id
       group-id: itapi
@@ -42,7 +42,7 @@ spring:
       value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
     producer:
       # producer bootstrap servers가 따로 존재하면 설정
-      # bootstrap-servers: 3.34.97.97:9092
+      bootstrap-servers: 192.168.0.181:9092,192.168.0.181:9093,192.168.0.181:9094
 
       # 데이터를 보낼 때, key/value를 직렬화
       # JSON 데이터를 보낼 것이라면 JsonDeserializer
