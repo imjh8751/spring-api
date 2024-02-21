@@ -1,8 +1,10 @@
 package com.betwe.eurekaserver.controller;
 
+import java.sql.Timestamp;
 import java.time.Instant;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import javax.servlet.http.HttpSession;
@@ -12,7 +14,10 @@ import org.springframework.data.redis.core.HashOperations;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.betwe.eurekaserver.service.RedisService;
 
 @RestController
 @RequestMapping("/redis")
@@ -22,6 +27,9 @@ public class RedisController {
 
     @Autowired
     private RedisTemplate<String, Object> redisTemplate;
+
+    @Autowired
+    RedisService redisService;
 
     @GetMapping("/save")
     public void saveClientInfo(jakarta.servlet.http.HttpServletRequest request) {
@@ -61,4 +69,29 @@ public class RedisController {
 		return session.getId();
 	}
     
+    @RequestMapping(value = "/setString")
+    @ResponseBody
+    public void setValue(String testkey, String testvalue){
+        Timestamp currentTimestamp = new Timestamp(System.currentTimeMillis());
+        redisService.setValues(testkey,testvalue);
+    }
+
+    @RequestMapping(value = "/getString")
+    @ResponseBody
+    public Object getValue(String testkey){
+        return redisService.getValues(testkey);
+    }
+
+
+    @RequestMapping(value = "/setSets")
+    @ResponseBody
+    public void setSets(String testkey,String... testvalues){
+        redisService.setSets(testkey,testvalues);
+    }
+
+    @RequestMapping(value = "/getSets")
+    @ResponseBody
+    public Set getSets(String key){
+        return redisService.getSets(key);
+    }
 }
