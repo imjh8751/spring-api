@@ -16,13 +16,16 @@ import com.betwe.eurekaserver.service.KafkaProducerService;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequiredArgsConstructor
 @RequestMapping("/kafka")
 public class KafkaController {
     
 	private final Logger log = LoggerFactory.getLogger(this.getClass());
+    @Autowired
     private final KafkaProducerService producer;
 
+    KafkaController(KafkaProducerService producer) {
+        this.producer = producer;
+    }
     @GetMapping("/")
     public String getMessage() {
         // 디버그 로그 출력

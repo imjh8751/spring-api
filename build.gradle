@@ -34,6 +34,7 @@ dependencies {
 	//implementation 'org.springdoc:springdoc-openapi-ui:1.7.0' // 최신 버전을 사용할 수 있도록 변경 가능
 	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.1.0' //swagger-ui/index.html(swagger3.x.x), swagger-ui.html(swagger2.x.x버전)
 
+	//kafka 관련 라이브라리
 	implementation 'org.springframework.kafka:spring-kafka'
 
 	implementation 'io.jsonwebtoken:jjwt:0.9.1'
