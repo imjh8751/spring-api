@@ -34,28 +34,28 @@ public class KafkaController {
 
     @PostMapping(value = "/send")
     public String sendMessage(@RequestParam("message") String message) {
-        log.debug("message : " + message);
+        log.info("message : " + message);
         this.producer.sendMessage("test", message);
         return "success";
     }
 
     @GetMapping(value = "/send2/{message}")
     public String sendMessage2(@PathVariable String message) {
-        log.debug("message : " + message);
+        log.info("message : " + message);
         this.producer.sendMessage("test", message);
         return "success";
     }
     
     @GetMapping("/send3")
     public String sendMessage3(@RequestBody String message) {
-    	log.debug("message topic ::: " + message);
+    	log.info("message topic ::: " + message);
         this.producer.sendMessage("test", message);
         return "success";
     }
     
     @GetMapping("/send4")
     public String sendMessage3() {
-    	log.debug("message topic ::: testteset");
+    	log.info("message topic ::: testteset");
         this.producer.sendMessage("test", "testteset!!!!!!!!!");
         return "success";
     }
